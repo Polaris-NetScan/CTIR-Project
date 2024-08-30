@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Report Dashboard</title>
+    <!-- Include Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        table {
+            font-size: small;
+        }
+
+        .truncate-text {
+            max-width: 150px; /* Adjust as needed */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-buttons a {
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+
+        /* Align the Add Report button to the right */
+        .buttons {
+            justify-content: flex-end;
+        }
+
+        /* Styling for the dark navigation bar */
+        .navbar {
+            background-color: #363636; /* Dark color for the navigation bar */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add shadow effect */
+        }
+
+        /* Styling for the navigation links */
+        .navbar-item {
+            color: #ffffff; /* White color for the navigation links */
+        }
+
+        /* Styling for the burger menu icon */
+        .navbar-burger {
+            color: #ffffff; /* White color for the burger menu icon */
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky navigation bar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <strong style="color: #ffffff">Cyber Threat Incident Report Dashboard</strong>
+                </a>
+                <!-- Burger menu icon -->
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-info" href="{{ url_for('add_report') }}">Add Report</a>
+                            <a class="button is-danger" href="{{ url_for('logout') }}">Logout</a> <!-- Logout button -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-centered is-narrow">
+                    <thead>
+                        <tr>
+                            <th class="is-dark">Date of Report</th>
+                            <th class="is-dark">Date of Incident</th>
+                            <th class="is-dark">Type of Attack</th>
+                            <th class="is-dark">Threat Actor</th>
+                            <th class="is-dark">Threat Actor Alias</th>
+                            <th class="is-dark">Targeted Units</th>
+                            <th class="is-dark">Target Industries</th>
+                            <th class="is-dark">Incident Sites</th>
+                            <th class="is-dark">Severity Level</th>
+                            <th class="is-dark">Digital Infrastructure</th>
+                            <th class="is-dark">Attack Method</th>
+                            <th class="is-dark">Impact</th>
+                            <th class="is-dark">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in reports %}
+                        <tr>
+                            <td class="truncate-text">{{ report['report_date'] }}</td>
+                            <td class="truncate-text">{{ report['incident_date'] }}</td>
+                            <td class="truncate-text">{{ report['attack_type'] }}</td>
+                            <td class="truncate-text">{{ report['threat_actor'] }}</td>
+                            <td class="truncate-text">{{ report['threat_actor_alias'] }}</td>
+                            <td class="truncate-text">{{ report['targeted_units'] }}</td>
+                            <td class="truncate-text">{{ report['target_industries'] }}</td>
+                            <td class="truncate-text">{{ report['incident_sites'] }}</td>
+                            <td class="truncate-text">{{ report['severity'] }}</td>
+                            <td class="truncate-text">{{ report['digital_infrastructure'] }}</td>
+                            <td class="truncate-text">{{ report['attack_method'] }}</td>
+                            <td class="truncate-text">{{ report['impact'] }}</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a class="button is-small is-primary" href="{{ url_for('view_report', report_id=report['id']) }}">View</a>
+                                    <a class="button is-small is-warning" href="{{ url_for('edit_report', report_id=report['id']) }}">Edit</a>
+                                    <a class="button is-small is-danger" href="{{ url_for('delete_report', report_id=report['id']) }}">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle burger menu functionality
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Check if there are any navbar burgers
+            if ($navbarBurgers.length > 0) {
+
+                // Add a click event on each of them
+                $navbarBurgers.forEach( el => {
+                    el.addEventListener('click', () => {
+
+                        // Get the target from the "data-target" attribute
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+
+                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+
+                    });
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>

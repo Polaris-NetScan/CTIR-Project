@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Incident Report</title>
+    <!-- Include Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Edit Incident Report</h1>
+            <form method="POST">
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Date of Report:</label>
+                            <div class="control">
+                                <input class="input" type="date" name="report_date" value="{{ report['report_date'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Date of Incident:</label>
+                            <div class="control">
+                                <input class="input" type="date" name="incident_date" value="{{ report['incident_date'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Type of Attack:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="attack_type" value="{{ report['attack_type'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Threat Actor:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="threat_actor" value="{{ report['threat_actor'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Threat Actor Personalities (Alias):</label>
+                            <div class="control">
+                                <input class="input" type="text" name="threat_actor_alias" value="{{ report['threat_actor_alias'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Targeted Unit/s:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="targeted_units" value="{{ report['targeted_units'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Target Industries:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="target_industries" value="{{ report['target_industries'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Incident Sites:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="incident_sites" value="{{ report['incident_sites'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Address:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="address" value="{{ report['address'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Severity Level:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="severity" value="{{ report['severity'] }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Digital Infrastructure:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="digital_infrastructure" value="{{ report['digital_infrastructure'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Operating System:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="operating_system" value="{{ report['operating_system'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Method of Attack:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="attack_method" value="{{ report['attack_method'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Impact:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="impact" value="{{ report['impact'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Action Taken:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="action_taken" value="{{ report['action_taken'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Source:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="source" value="{{ report['source'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Recommendation/s:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="recommendations" value="{{ report['recommendations'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Assessment:</label>
+                            <div class="control">
+                                <input class="input" type="text" name="assessment" value="{{ report['assessment'] }}">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Remarks:</label>
+                            <div class="control">
+                                <textarea class="textarea" name="remarks">{{ report['remarks'] }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-info" type="submit">Update</button>
+                        <span class="is-hidden-touch">&nbsp;&nbsp;</span>
+                        <a class="button is-danger" href="{{ url_for('dashboard') }}">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

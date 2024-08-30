@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Threat Incident Incident Report Form</title>
+    <!-- Include Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Cyber Threat Incident Report</h1>
+            <br>
+            <form method="POST">
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Date of Report:</label>
+                            <div class="control">
+                                <input class="input is-small" type="date" name="report_date">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Date of Incident:</label>
+                            <div class="control">
+                                <input class="input is-small" type="date" name="incident_date">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Type of Attack:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="attack_type">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Threat Actor:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="threat_actor">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Threat Actor Personalities (Alias):</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="threat_actor_alias">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Targeted Unit/s:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="targeted_units">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Target Industries:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="target_industries">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Incident Sites:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="incident_sites">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Address:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="address">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Severity Level:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="severity">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Digital Infrastructure:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="digital_infrastructure">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Operating System:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="operating_system">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Method of Attack:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="attack_method">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Impact:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="impact">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Action Taken:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="action_taken">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Source:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="source">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Recommendation/s:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="recommendations">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Assessment:</label>
+                            <div class="control">
+                                <input class="input is-small" type="text" name="assessment">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Remarks:</label>
+                            <div class="control">
+                                <textarea class="textarea is-small" name="remarks"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+					<div class="control">
+					    <button class="button is-info" type="submit">Submit</button>
+					    <span class="is-hidden-touch">&nbsp;&nbsp</span>
+					    <a class="button is-warning" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+					</div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Threat Report</title>
+    <!-- Include Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-centered">
+                <tbody>
+                    <tr>
+                        <th class="has-text-centered is-dark" colspan="2">Cyber Threat Report</th>
+                    </tr>
+                    <tr>
+                        <th>Date of Report</th>
+                        <td>{{ report['report_date'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date of Incident</th>
+                        <td>{{ report['incident_date'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type of Attack</th>
+                        <td>{{ report['attack_type'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Threat Actor</th>
+                        <td>{{ report['threat_actor'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Threat Actor Personalities (Alias)</th>
+                        <td>{{ report['threat_actor_alias'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Targeted Unit/s</th>
+                        <td>{{ report['targeted_units'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Target Industries</th>
+                        <td>{{ report['target_industries'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Incident Sites</th>
+                        <td>{{ report['incident_sites'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ report['address'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Severity Level</th>
+                        <td>{{ report['severity'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Digital Infrastructure</th>
+                        <td>{{ report['digital_infrastructure'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Operating System</th>
+                        <td>{{ report['operating_system'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Method of Attack</th>
+                        <td>{{ report['attack_method'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Impact</th>
+                        <td>{{ report['impact'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Action Taken</th>
+                        <td>{{ report['action_taken'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Source</th>
+                        <td>{{ report['source'] }}</td>
+                    </tr>
+					<tr>
+					    <th>Recommendation/s</th>
+					    <td>{{ report['recommendations'] | safe }}</td>
+					</tr>
+                    <tr>
+                        <th>Assessment</th>
+                        <td>{{ report['assessment'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Remarks</th>
+                        <td>{{ report['remarks'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- JavaScript for displaying recommendations in bullet format -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var recommendationsCell = document.getElementById('recommendations');
+            var recommendations = recommendationsCell.textContent;
+
+            // Use regex to split by sentences
+            var sentences = recommendations.split(/(?<=[.!?])\s+(?=[A-Z])/);
+
+            var ul = document.createElement('ul');
+            sentences.forEach(function(sentence) {
+                var li = document.createElement('li');
+                li.textContent = sentence.trim();
+                ul.appendChild(li);
+            });
+
+            recommendationsCell.textContent = ''; // Clear the cell content
+            recommendationsCell.appendChild(ul);
+        });
+    </script>
+</body>
+</html>
